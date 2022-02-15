@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6075155838382831309}
   - component: {fileID: 7196912292531665256}
   - component: {fileID: 4901155340339187106}
-  - component: {fileID: 6846767348704259192}
+  - component: {fileID: 2776950692057723011}
   m_Layer: 0
   m_Name: PP_Tree_10
   m_TagString: Untagged
@@ -57,6 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -81,8 +82,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6846767348704259192
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &2776950692057723011
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -91,7 +93,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5006698605598939749, guid: a3ccb41ae53c6bf4bb0a5bfc470bf069, type: 3}
+  m_Radius: 0.2373261
+  m_Height: 6.1635313
+  m_Direction: 1
+  m_Center: {x: -0.12253545, y: -0.7582121, z: -0.10575278}

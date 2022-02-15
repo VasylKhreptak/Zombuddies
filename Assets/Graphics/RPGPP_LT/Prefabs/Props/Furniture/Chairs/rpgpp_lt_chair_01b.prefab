@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4538304254603464}
   - component: {fileID: 33186033246877698}
   - component: {fileID: 23678427644670724}
+  - component: {fileID: 1195492249349980667}
+  - component: {fileID: 6903624827987418586}
   m_Layer: 0
   m_Name: rpgpp_lt_chair_01b
   m_TagString: Untagged
@@ -81,3 +83,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1195492249349980667
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944616840669060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5397432, y: 0.6016338, z: 0.6306896}
+  m_Center: {x: -0.019798264, y: 0.3008157, z: -0.27806813}
+--- !u!65 &6903624827987418586
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944616840669060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5245601, y: 0.54399943, z: 0.099277884}
+  m_Center: {x: -0.027389899, y: 0.872432, z: -0.027545437}
