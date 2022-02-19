@@ -14,6 +14,10 @@ public class GameFramerate : MonoBehaviour
     {
         Set(PlayerPrefsSafe.GetInt(_key, _defaultFramerate));
 
+#if UNITY_EDITOR
+        Set(int.MaxValue);
+#endif
+
         QualitySettings.vSyncCount = 0;
     }
 

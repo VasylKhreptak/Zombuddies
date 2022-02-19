@@ -1,0 +1,36 @@
+using System;
+using UnityEngine;
+using Zenject;
+
+public class StairMovement : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private TriggerChecker _upperChecker;
+    [SerializeField] private TriggerChecker _lowerChecker;
+
+    [Header("Stair Movement Preferences")]
+    [SerializeField] private float _smooth = 0.1f;
+
+    [Inject]
+    private Joystick _joystick;
+    
+    #region MonoBehaviour
+
+    private void OnValidate()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (_joystick.IsMoving == false) return;
+        
+        if (_upperChecker.isInTrigger == false && _lowerChecker.isInTrigger)
+        {
+            _rigidbody.position += new Vector3(0, _smooth, 0);
+        }
+    }
+
+    #endregion
+}
