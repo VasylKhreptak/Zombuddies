@@ -18,7 +18,7 @@ public sealed class ObjectPooler : MonoBehaviour
     [Header("Pool")]
     private Dictionary<Pools, Queue<GameObject>> _poolDictionary;
     [SerializeField] private List<Pool> _pools;
-    
+
     [Inject] private DiContainer _diContainer;
 
     #region MonoBehaviour

@@ -16,8 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Range(0f, 1f)]
     private float _rotationSpeed;
 
-    [Inject]
-    private Joystick _joystick;
+    [Inject] private Joystick _joystick;
 
     public float MaxSpeed => _maxSpeed;
 

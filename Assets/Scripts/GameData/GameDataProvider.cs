@@ -6,7 +6,7 @@ public static class GameDataProvider
     public static void Save<T>(string key, T obj)
     {
         string saveJson = JsonUtility.ToJson(obj);
-        
+
         PlayerPrefsSafe.SetString(key, saveJson);
     }
 
@@ -18,7 +18,7 @@ public static class GameDataProvider
         }
 
         string saveJson = PlayerPrefsSafe.GetString(key);
-        
+
         return JsonUtility.FromJson<T>(saveJson);
     }
 

@@ -6,15 +6,14 @@ public class StairMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody _rigidbody;
-    [SerializeField] private TriggerChecker _upperChecker;
-    [SerializeField] private TriggerChecker _lowerChecker;
+    [SerializeField] private TriggerComponent _upperTrigger;
+    [SerializeField] private TriggerComponent _lowerTrigger;
 
     [Header("Stair Movement Preferences")]
     [SerializeField] private float _smooth = 0.1f;
 
-    [Inject]
-    private Joystick _joystick;
-    
+    [Inject] private Joystick _joystick;
+
     #region MonoBehaviour
 
     private void OnValidate()
@@ -25,8 +24,8 @@ public class StairMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (_joystick.IsMoving == false) return;
-        
-        if (_upperChecker.isInTrigger == false && _lowerChecker.isInTrigger)
+
+        if (_upperTrigger.isInTrigger == false && _lowerTrigger.isInTrigger)
         {
             _rigidbody.position += new Vector3(0, _smooth, 0);
         }
