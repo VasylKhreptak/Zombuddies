@@ -2644,6 +2644,7 @@ GameObject:
   - component: {fileID: 4548419108342269659}
   - component: {fileID: 2434626038064666099}
   - component: {fileID: 1677961182735964217}
+  - component: {fileID: 8681222978858598434}
   m_Layer: 0
   m_Name: ToonSoldiers_infantry
   m_TagString: Untagged
@@ -2797,7 +2798,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 90
   m_Drag: 0
-  m_AngularDrag: 7.04
+  m_AngularDrag: 24.56
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -2817,7 +2818,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 411534}
   _groundChecker: {fileID: 1677961182735964217}
-  _rayLength: 0.6
+  _startOffset: 1
+  _rayLength: 1.6
   _audioItems:
   - layerMask:
       serializedVersion: 2
@@ -2866,8 +2868,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 411534}
+  _startOffset: 1
   _rayLength: 0.6
   _checkerData: {fileID: 11400000, guid: 80eadcb8d4b3f6b43983b8db238526a5, type: 2}
+--- !u!114 &8681222978858598434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e12af135b729ba4aa82366357db0f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
 --- !u!1 &185032
 GameObject:
   m_ObjectHideFlags: 0
@@ -3414,6 +3430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _triggerComponentData: {fileID: 11400000, guid: ade2e64ef5afe9f448c14d65e80eee7d,
     type: 2}
+  affectedGameObject: {fileID: 0}
 --- !u!1 &5885657951199592878
 GameObject:
   m_ObjectHideFlags: 0
@@ -3473,3 +3490,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _triggerComponentData: {fileID: 11400000, guid: ade2e64ef5afe9f448c14d65e80eee7d,
     type: 2}
+  affectedGameObject: {fileID: 0}

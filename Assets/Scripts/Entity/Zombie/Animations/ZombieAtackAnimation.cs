@@ -4,9 +4,9 @@ using UnityEngine;
 public class ZombieAtackAnimation : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private TriggerComponent _triggerComponent;
+    [SerializeField] private TriggerComponent _attackZone;
     [SerializeField] private Animator _animator;
-
+    
     [Header("Preferences")]
     [SerializeField] private string _animatorAtackParameter;
     [SerializeField] private string _atackIndexParameter;
@@ -20,24 +20,27 @@ public class ZombieAtackAnimation : MonoBehaviour
 
     private void OnValidate()
     {
-        _triggerComponent ??= GetComponent<TriggerComponent>();
+        _attackZone ??= GetComponent<TriggerComponent>();
     }
 
     private void OnEnable()
     {
-        _triggerComponent.onEnter += StartAnimating;
-        _triggerComponent.onExit += StopAnimating;
+        _attackZone.onEnter += StartAnimating;
+        _attackZone.onExit += StopAnimating;
     }
 
     private void OnDisable()
     {
-        _triggerComponent.onEnter -= StartAnimating;
-        _triggerComponent.onExit -= StopAnimating;
+        _attackZone.onEnter -= StartAnimating;
+        _attackZone.onExit -= StopAnimating;
     }
 
     #endregion
 
-    private void StartAnimating(Collider collider)
+    private void StartAnimating(Collider collider) => StartAnimating();
+    private void StopAnimating(Collider collider) => StopAnimating();
+
+    private void StartAnimating()
     {
         if (_animateCoroutine == null)
         {
@@ -45,7 +48,7 @@ public class ZombieAtackAnimation : MonoBehaviour
         }
     }
 
-    private void StopAnimating(Collider collider)
+    private void StopAnimating()
     {
         if (_animateCoroutine != null)
         {
@@ -59,6 +62,12 @@ public class ZombieAtackAnimation : MonoBehaviour
     {
         while (true)
         {
+            if (_attackZone.affectedGameObject == null || _attackZone.affectedGameObject.activeSelf == false)
+            {
+                yield return new WaitForSeconds(_animateDelay);
+                continue;
+            }
+            
             Animate();
 
             yield return new WaitForSeconds(_animateDelay);

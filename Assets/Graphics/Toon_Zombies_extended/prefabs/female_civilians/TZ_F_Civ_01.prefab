@@ -1196,13 +1196,13 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.36
   m_Speed: 3
-  m_Acceleration: 8
+  m_Acceleration: 90
   avoidancePriority: 50
-  m_AngularSpeed: 1000
+  m_AngularSpeed: 500
   m_StoppingDistance: 1.3
-  m_AutoTraverseOffMeshLink: 0
-  m_AutoBraking: 1
-  m_AutoRepath: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
   m_Height: 1.48
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
@@ -1264,6 +1264,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a865f4832c4f304881b2c01448caa8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackZone: {fileID: 6099068392442067797}
+  _atacks:
+  - type: 0
+    damage: 35
+  - type: 1
+    damage: 20
 --- !u!114 &1027199989695481702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1276,8 +1282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7b58db12d8efb4995da423730cb74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _triggerComponent: {fileID: 6099068392442067797}
+  _attackZone: {fileID: 6099068392442067797}
   _animator: {fileID: 9515022}
+  _player: {fileID: 0}
   _animatorAtackParameter: Atack
   _atackIndexParameter: AtackIndex
   _minAtackIndex: 0
@@ -1295,6 +1302,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c84b16d2316c69240842214ff76bb992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _transform: {fileID: 470242}
+  _zombieAttack: {fileID: 8944456488923542383}
+  _audioItems:
+  - zombieAttackType: 0
+    audioClips:
+    - {fileID: 8300000, guid: 6a6271eb24cd3204f8f9203f2e907c27, type: 3}
+    - {fileID: 8300000, guid: 1395bbe97054cdd40932ea9f30cce37d, type: 3}
+    - {fileID: 8300000, guid: 7a6005742d72a0047a68daf5fa019ef2, type: 3}
+  - zombieAttackType: 1
+    audioClips:
+    - {fileID: 8300000, guid: 17e51f044eb664e40ab7741631bf5ae8, type: 3}
+    - {fileID: 8300000, guid: 28b21e5ba7b37ea458749d7484cf67c4, type: 3}
+    - {fileID: 8300000, guid: 8ee9ec6ed171c394085e38019d7384e0, type: 3}
+    - {fileID: 8300000, guid: 8db3d62b46c9b614cb8cc6077f07c913, type: 3}
+    - {fileID: 8300000, guid: d2d046ffa2c50a6498ab933caadbab42, type: 3}
+    - {fileID: 8300000, guid: c1f54981618e8864bb8938a96c311e0b, type: 3}
+    - {fileID: 8300000, guid: 37efe09743c1e9849b6f138044769ce1, type: 3}
+    - {fileID: 8300000, guid: 14ba5cd519091db4ba069c455621cf24, type: 3}
+    - {fileID: 8300000, guid: 3a0c4b71641376245be903e32489923f, type: 3}
+    - {fileID: 8300000, guid: 2ad5d9d8db29aa840baacc997fea99b8, type: 3}
 --- !u!1 &140772
 GameObject:
   m_ObjectHideFlags: 0
@@ -4551,8 +4578,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.49033126, y: 0.5005722, z: 0.32986453}
-  m_Center: {x: 0.03323929, y: 1.1104236, z: 0.31143057}
+  m_Size: {x: 0.5167779, y: 0.55259, z: 0.3298645}
+  m_Center: {x: -0.014189525, y: 1.234342, z: 0.31143057}
 --- !u!114 &6099068392442067797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4567,3 +4594,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _triggerComponentData: {fileID: 11400000, guid: 209913383b1debf478ddddae8a5bd882,
     type: 2}
+  affectedGameObject: {fileID: 0}

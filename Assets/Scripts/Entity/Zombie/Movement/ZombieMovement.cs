@@ -2,12 +2,12 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 public class ZombieMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform _transform;
-    [SerializeField] private Transform _targetTransform;
     [SerializeField] private NavMeshAgent _agent;
 
     [Header("Preferences")]
@@ -15,6 +15,8 @@ public class ZombieMovement : MonoBehaviour
     [SerializeField] private float _maxDelay = 5f;
     [SerializeField] private float _maxDistance = 20;
 
+    [Inject] private ZombieTargetsProvider _targetsProvider;
+    
     private Coroutine _setDestinationCoroutine;
 
     #region MonoBehaviour
@@ -28,11 +30,15 @@ public class ZombieMovement : MonoBehaviour
     private void OnEnable()
     {
         StartSettingDestination();
+
+        _targetsProvider.onAddTarget += StartSettingDestination;
     }
 
     private void OnDisable()
     {
         StopSettingsDestination();
+        
+        _targetsProvider.onAddTarget -= StartSettingDestination;
     }
 
     #endregion
@@ -59,15 +65,24 @@ public class ZombieMovement : MonoBehaviour
     {
         while (true)
         {
-            _agent.SetDestination(_targetTransform.position);
+            Transform closestTarget = _targetsProvider.GetClosestTarget(_transform);
+
+            if (closestTarget == null)
+            {
+                StopSettingsDestination();
+
+                break;
+            }
             
-            yield return new WaitForSeconds(GetDelay());
+            _agent.SetDestination(closestTarget.position);
+            
+            yield return new WaitForSeconds(GetDelay(closestTarget));
         }
     }
 
-    private float GetDelay()
+    private float GetDelay(Transform target)
     {
-        float distanceToTarget = Vector3.Distance(_transform.position, _targetTransform.position);
+        float distanceToTarget = Vector3.Distance(_transform.position, target.position);
 
         float unclampedDelay = distanceToTarget / _maxDistance * _maxDelay;
 
@@ -77,9 +92,13 @@ public class ZombieMovement : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (_targetTransform == null) return;
+        if (_targetsProvider == null) return;
+        
+        Transform closestTarget = _targetsProvider.GetClosestTarget(_transform);
+        
+        if (closestTarget == null) return;
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(_targetTransform.position, _maxDistance);
+        Gizmos.DrawWireSphere(closestTarget.position, _maxDistance);
     }
 }

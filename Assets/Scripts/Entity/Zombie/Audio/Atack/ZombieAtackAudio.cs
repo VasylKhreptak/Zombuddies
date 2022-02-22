@@ -1,14 +1,17 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 public class ZombieAtackAudio : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform _transform;
-    [SerializeField] private ZombieAtack _zombieAtack;
+    [FormerlySerializedAs("_zombieAtack")]
+    [SerializeField] private ZombieAttack _zombieAttack;
 
     [Header("Sounds")]
-    [SerializeField] private AudioClip[] _audioClips;
+    [SerializeField] private AudioItem[] _audioItems;
 
     [Inject] private AudioPooler _audioPooler;
 
@@ -17,28 +20,45 @@ public class ZombieAtackAudio : MonoBehaviour
     private void OnValidate()
     {
         _transform ??= GetComponent<Transform>();
-        _zombieAtack ??= GetComponent<ZombieAtack>();
+        _zombieAttack ??= GetComponent<ZombieAttack>();
     }
 
     private void OnEnable()
     {
-        _zombieAtack.onAtack += PlayAudio;
+        _zombieAttack.onAttack += PlayAudio;
     }
 
     private void OnDisable()
     {
-        _zombieAtack.onAtack -= PlayAudio;
+        _zombieAttack.onAttack -= PlayAudio;
     }
 
     #endregion
 
-    private void PlayAudio(ZombieAtackType zombieAtackType)
+    private void PlayAudio(ZombieAttackType zombieAttackType)
     {
-        //_audioPooler.PlayOneShootSound(AudioMixerGroups.SOUND, _audioClips.Random(), _transform.position, 1f, 1f);
+        _audioPooler.PlayOneShootSound(AudioMixerGroups.SOUND, GetAudioClip(zombieAttackType),
+            _transform.position, 1f, 1f);
     }
 
-    private AudioClip GetAudioClip(ZombieAtackType atackType)
+    private AudioClip GetAudioClip(ZombieAttackType attackType)
     {
-        return null;
+        foreach (var audioItem in _audioItems)
+        {
+            if (audioItem.zombieAttackType == attackType)
+            {
+                return audioItem.audioClips.Random();
+            }
+        }
+
+        throw new ArgumentException("Invalid parameter of type: " + (typeof(ZombieAttackType)));
+    }
+
+    [Serializable]
+    public class AudioItem
+    {
+        public ZombieAttackType zombieAttackType;
+        [FormerlySerializedAs("_audioClips")]
+        public AudioClip[] audioClips;
     }
 }

@@ -11,15 +11,19 @@ public class TriggerComponent : MonoBehaviour
     public Action<Collider> onEnter;
     public Action<Collider> onExit;
 
+    public GameObject affectedGameObject;
+    
     #region MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
         if (_triggerComponentData.LayerMask.ContainsLayer(other.gameObject.layer))
         {
-            onEnter?.Invoke(other);
-
+            affectedGameObject = other.gameObject;
+            
             isInTrigger = true;
+            
+            onEnter?.Invoke(other);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -28,6 +32,8 @@ public class TriggerComponent : MonoBehaviour
         {
             onExit?.Invoke(other);
 
+            affectedGameObject = null;
+            
             isInTrigger = false;
         }
     }
