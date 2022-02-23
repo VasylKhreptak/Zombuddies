@@ -1270,6 +1270,8 @@ MonoBehaviour:
     damage: 35
   - type: 1
     damage: 20
+  - type: 2
+    damage: 20
 --- !u!114 &1027199989695481702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3797,6 +3799,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 465410}
+  - component: {fileID: 1786178980245552713}
   m_Layer: 0
   m_Name: Bip001 R Finger0Nub
   m_TagString: Untagged
@@ -3818,6 +3821,23 @@ Transform:
   m_Father: {fileID: 459610}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1786178980245552713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6795434c8c3e34048829c4ca144b4f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 465410}
+  _zombieAttack: {fileID: 8944456488923542383}
+  _particleItems:
+  - particle: 0
+    attackType: 1
 --- !u!1 &191656
 GameObject:
   m_ObjectHideFlags: 0

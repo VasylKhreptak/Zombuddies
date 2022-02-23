@@ -54,5 +54,6 @@ public class ZombieAttack : MonoBehaviour
 public enum ZombieAttackType
 {
     Bite = 0,
-    Scratch = 1,
+    RightScratch = 1,
+    LeftScratch = 2,
 }
