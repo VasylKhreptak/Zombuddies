@@ -2873,7 +2873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 411534}
   _startOffset: 1
-  _rayLength: 0.6
+  _rayLength: 1.6
   _checkerData: {fileID: 11400000, guid: 80eadcb8d4b3f6b43983b8db238526a5, type: 2}
 --- !u!114 &8681222978858598434
 MonoBehaviour:
