@@ -41541,7 +41541,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 887
   m_UseGeometry: 1
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
@@ -41549,7 +41549,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 1
-  m_VoxelSize: 0.07
+  m_VoxelSize: 0.3
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: 743a86885256c3c4c9640bd62df3badb, type: 2}
 --- !u!1001 &883827214
@@ -51109,6 +51109,11 @@ PrefabInstance:
       propertyPath: _targetTransform
       value: 
       objectReference: {fileID: 1974855992}
+    - target: {fileID: 6365256982188392973, guid: d31484b2c51b9c54396c589128d42566,
+        type: 3}
+      propertyPath: _range
+      value: 47.65
+      objectReference: {fileID: 0}
     - target: {fileID: 6570569417953899574, guid: d31484b2c51b9c54396c589128d42566,
         type: 3}
       propertyPath: m_IsKinematic

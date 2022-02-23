@@ -1075,6 +1075,7 @@ GameObject:
   - component: {fileID: 8944456488923542383}
   - component: {fileID: 1027199989695481702}
   - component: {fileID: 1806415357785506740}
+  - component: {fileID: 6365256982188392973}
   m_Layer: 0
   m_Name: TZ_F_Civ_01
   m_TagString: Untagged
@@ -1180,10 +1181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 470242}
-  _targetTransform: {fileID: 0}
   _agent: {fileID: 2832452503728265509}
-  _minDelay: 0.3
-  _maxDelay: 5
+  _minSetDestinationDelay: 0.5
+  _maxSetDestinationDelay: 5
   _maxDistance: 47.01
 --- !u!195 &2832452503728265509
 NavMeshAgent:
@@ -1284,7 +1284,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackZone: {fileID: 6099068392442067797}
   _animator: {fileID: 9515022}
-  _player: {fileID: 0}
   _animatorAtackParameter: Atack
   _atackIndexParameter: AtackIndex
   _minAtackIndex: 0
@@ -1322,6 +1321,22 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 14ba5cd519091db4ba069c455621cf24, type: 3}
     - {fileID: 8300000, guid: 3a0c4b71641376245be903e32489923f, type: 3}
     - {fileID: 8300000, guid: 2ad5d9d8db29aa840baacc997fea99b8, type: 3}
+--- !u!114 &6365256982188392973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fae8fee5f538fb34abb320eaaa9420db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 470242}
+  _zombieTargetFollow: {fileID: 2135672589562054389}
+  _agent: {fileID: 2832452503728265509}
+  _movementData: {fileID: 11400000, guid: 4c86bb7dbf6787f4a813574272d8266c, type: 2}
 --- !u!1 &140772
 GameObject:
   m_ObjectHideFlags: 0

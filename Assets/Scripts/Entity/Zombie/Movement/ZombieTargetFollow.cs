@@ -1,24 +1,28 @@
 using System;
 using System.Collections;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 
-public class ZombieMovement : MonoBehaviour
+public class ZombieTargetFollow : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform _transform;
     [SerializeField] private NavMeshAgent _agent;
 
     [Header("Preferences")]
-    [SerializeField] private float _minDelay = 0.5f;
-    [SerializeField] private float _maxDelay = 5f;
+    [SerializeField] private float _minSetDestinationDelay = 0.5f;
+    [SerializeField] private float _maxSetDestinationDelay = 5f;
     [SerializeField] private float _maxDistance = 20;
 
     [Inject] private ZombieTargetsProvider _targetsProvider;
     
     private Coroutine _setDestinationCoroutine;
 
+    public Action onStartFollow;
+    public Action onStopFollow;
+    
     #region MonoBehaviour
 
     private void OnValidate()
@@ -47,6 +51,8 @@ public class ZombieMovement : MonoBehaviour
     {
         if (_setDestinationCoroutine == null)
         {
+            onStartFollow?.Invoke();
+            
             _setDestinationCoroutine = StartCoroutine(SetDestinationRoutine());
         }
     }
@@ -55,6 +61,8 @@ public class ZombieMovement : MonoBehaviour
     {
         if (_setDestinationCoroutine != null)
         {
+            onStopFollow?.Invoke();
+            
             StopCoroutine(_setDestinationCoroutine);
 
             _setDestinationCoroutine = null;
@@ -84,9 +92,9 @@ public class ZombieMovement : MonoBehaviour
     {
         float distanceToTarget = Vector3.Distance(_transform.position, target.position);
 
-        float unclampedDelay = distanceToTarget / _maxDistance * _maxDelay;
+        float unclampedDelay = distanceToTarget / _maxDistance * _maxSetDestinationDelay;
 
-        return Mathf.Clamp(unclampedDelay, _minDelay, _maxDelay);
+        return Mathf.Clamp(unclampedDelay, _minSetDestinationDelay, _maxSetDestinationDelay);
     }
 
 

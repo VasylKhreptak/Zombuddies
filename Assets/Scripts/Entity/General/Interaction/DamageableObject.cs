@@ -31,8 +31,6 @@ public class DamageableObject : MonoBehaviour, IHealth
         onTakeDamage?.Invoke(damage);
         
         _health -= damage;
-
-        Debug.Log("Took Damage: " + (gameObject.name) + " | " + (damage));
         
         if (IsAlive == false)
         {
@@ -44,8 +42,6 @@ public class DamageableObject : MonoBehaviour, IHealth
     {
         onDeath?.Invoke();
         
-        Debug.Log("Death: " + (gameObject.name));
-
         gameObject.SetActive(false);
     }
 }
