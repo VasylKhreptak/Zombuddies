@@ -7,10 +7,15 @@ public class WalkAudio : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform _transform;
     [SerializeField] private GroundChecker _groundChecker;
+    [SerializeField] private SpeedAdapter _speedAdapter;
+    
 
     [Header("Preferences")]
     [SerializeField] private float _startOffset = 1f;
     [SerializeField] private float _rayLength = 1f;
+    [SerializeField] private float _taregtWalkSpeed;
+    [SerializeField] private float _minVolume;
+    [SerializeField] private float _maxVolume;
 
     [Header("Audio Preferences")]
     [SerializeField] private AudioItem[] _audioItems;
@@ -24,6 +29,7 @@ public class WalkAudio : MonoBehaviour
     {
         _transform ??= GetComponent<Transform>();
         _groundChecker ??= GetComponent<GroundChecker>();
+        _speedAdapter ??= GetComponent<SpeedAdapter>();
     }
 
     #endregion
@@ -36,6 +42,18 @@ public class WalkAudio : MonoBehaviour
         }
     }
 
+    private bool CanPlayStepSound()
+    {
+        return _groundChecker.IsGrounded();
+    }
+
+    private void PlayStepSound()
+    {
+        AudioClip audioClip = GetAudioClip();
+
+        _audioPooler.PlayOneShootSound(AudioMixerGroups.SOUND, audioClip, _transform.position, 
+            GetVolume(), 1f);
+    }
 
     private AudioClip GetAudioClip()
     {
@@ -57,18 +75,15 @@ public class WalkAudio : MonoBehaviour
         return _defaultStepSounds.Random();
     }
 
-    private bool CanPlayStepSound()
+    private float GetVolume()
     {
-        return _groundChecker.IsGrounded();
+        float speed = _speedAdapter.velocity.magnitude;
+
+        float unclampedVolume = speed / _taregtWalkSpeed;
+
+        return Mathf.Clamp(unclampedVolume, _minVolume, _maxVolume);
     }
-
-    private void PlayStepSound()
-    {
-        AudioClip audioClip = GetAudioClip();
-
-        _audioPooler.PlayOneShootSound(AudioMixerGroups.SOUND, audioClip, _transform.position, 1f, 1f);
-    }
-
+    
     private void OnDrawGizmosSelected()
     {
         if (_transform == null) return;

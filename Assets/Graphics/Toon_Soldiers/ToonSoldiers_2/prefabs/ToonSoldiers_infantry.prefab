@@ -2818,8 +2818,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 411534}
   _groundChecker: {fileID: 1677961182735964217}
+  _speedAdapter: {fileID: 367300413477618063}
   _startOffset: 1
   _rayLength: 1.6
+  _taregtWalkSpeed: 6
+  _minVolume: 0.4
+  _maxVolume: 1
   _audioItems:
   - layerMask:
       serializedVersion: 2

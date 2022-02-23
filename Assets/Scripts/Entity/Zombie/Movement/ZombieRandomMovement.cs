@@ -33,6 +33,8 @@ public class ZombieRandomMovement : MonoBehaviour
 
     private void OnDisable()
     {
+        StopRandomMovement();
+        
         _zombieTargetFollow.onStartFollow -= StopRandomMovement;
         _zombieTargetFollow.onStopFollow -= StartRandomMovement;
     }
