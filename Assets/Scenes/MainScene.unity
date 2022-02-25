@@ -39492,6 +39492,11 @@ PrefabInstance:
       propertyPath: _rayLength
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2549537886549043954, guid: 0b66b9bdf70fc964fa924cea4e45c3d8,
+        type: 3}
+      propertyPath: _offset.y
+      value: 1.73
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b66b9bdf70fc964fa924cea4e45c3d8, type: 3}
 --- !u!1001 &856586210
@@ -51114,6 +51119,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 896194104339896328, guid: d31484b2c51b9c54396c589128d42566,
+        type: 3}
+      propertyPath: _offset.y
+      value: 1.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 896194104339896328, guid: d31484b2c51b9c54396c589128d42566,
+        type: 3}
+      propertyPath: _damageableObject
+      value: 
+      objectReference: {fileID: 1117470112}
     - target: {fileID: 1027199989695481702, guid: d31484b2c51b9c54396c589128d42566,
         type: 3}
       propertyPath: _player
@@ -51216,6 +51231,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d31484b2c51b9c54396c589128d42566, type: 3}
+--- !u!114 &1117470112 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7803756719339147547, guid: d31484b2c51b9c54396c589128d42566,
+    type: 3}
+  m_PrefabInstance: {fileID: 1117470111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e12af135b729ba4aa82366357db0f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1117470122 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8944456488923542383, guid: d31484b2c51b9c54396c589128d42566,

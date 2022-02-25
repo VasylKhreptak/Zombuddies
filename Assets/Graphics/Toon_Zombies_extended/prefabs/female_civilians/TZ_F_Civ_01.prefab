@@ -1076,6 +1076,8 @@ GameObject:
   - component: {fileID: 1027199989695481702}
   - component: {fileID: 1806415357785506740}
   - component: {fileID: 6365256982188392973}
+  - component: {fileID: 896194104339896328}
+  - component: {fileID: 7803756719339147547}
   m_Layer: 0
   m_Name: TZ_F_Civ_01
   m_TagString: Untagged
@@ -1339,6 +1341,34 @@ MonoBehaviour:
   _zombieTargetFollow: {fileID: 2135672589562054389}
   _agent: {fileID: 2832452503728265509}
   _movementData: {fileID: 11400000, guid: 4c86bb7dbf6787f4a813574272d8266c, type: 2}
+--- !u!114 &896194104339896328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1817d450a3a029648914ad9755424bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 470242}
+  _damageableObject: {fileID: 7803756719339147547}
+  _particle: 0
+--- !u!114 &7803756719339147547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e12af135b729ba4aa82366357db0f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
 --- !u!1 &140772
 GameObject:
   m_ObjectHideFlags: 0

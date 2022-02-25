@@ -39,8 +39,6 @@ public class ZombieAtackAudio : MonoBehaviour
     {
         _audioPooler.PlayOneShootSound(AudioMixerGroups.SOUND, GetAudioClip(zombieAttackType),
             _transform.position, 1f, 1f);
-        
-        Debug.Log("kjsadhfkjh");
     }
 
     private AudioClip GetAudioClip(ZombieAttackType attackType)

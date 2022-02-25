@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pools:
-  - _poolType: 0
-    _prefab: {fileID: 5484822809028615781, guid: 808095a18c467fc45be10e215f868fc4,
+  - _poolType: 1
+    _prefab: {fileID: 8287657955951733327, guid: f849ab2c5cfe8dd47b9526468e08567f,
       type: 3}
     _size: 10
     folder: {fileID: 0}

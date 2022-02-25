@@ -43,7 +43,7 @@ public class ZombieRandomMovement : MonoBehaviour
 
     private void StartRandomMovement()
     {
-        if (_randomMovementCoroutine == null)
+        if (_randomMovementCoroutine == null && gameObject.activeSelf)
         {
             _randomMovementCoroutine = StartCoroutine(RandomMovementRoutine());
         }
