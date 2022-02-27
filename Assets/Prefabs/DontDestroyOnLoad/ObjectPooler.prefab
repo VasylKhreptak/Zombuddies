@@ -49,3 +49,8 @@ MonoBehaviour:
       type: 3}
     _size: 10
     folder: {fileID: 0}
+  - _poolType: 0
+    _prefab: {fileID: 8287657955951733327, guid: b52b27e7f36e83e46996ae25f31dbbf0,
+      type: 3}
+    _size: 10
+    folder: {fileID: 0}

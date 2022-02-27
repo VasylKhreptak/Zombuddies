@@ -1078,6 +1078,7 @@ GameObject:
   - component: {fileID: 6365256982188392973}
   - component: {fileID: 896194104339896328}
   - component: {fileID: 7803756719339147547}
+  - component: {fileID: 8653089816592153997}
   m_Layer: 0
   m_Name: TZ_F_Civ_01
   m_TagString: Untagged
@@ -1356,6 +1357,7 @@ MonoBehaviour:
   _transform: {fileID: 470242}
   _damageableObject: {fileID: 7803756719339147547}
   _particle: 0
+  _offset: {x: 0, y: 0, z: 0}
 --- !u!114 &7803756719339147547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1369,6 +1371,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+--- !u!114 &8653089816592153997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26cc9b1b107a42d44b03e91d008d4f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 470242}
+  _damageableObject: {fileID: 7803756719339147547}
+  _audioClips:
+  - {fileID: 8300000, guid: feb202a394831974e8e5b78e50c5d430, type: 3}
+  - {fileID: 8300000, guid: ee81b9fc40006204480948fded7c328f, type: 3}
+  - {fileID: 8300000, guid: 06737b620387018428f84707d812782d, type: 3}
+  - {fileID: 8300000, guid: 891c3ad049a2fbc49a7acd886336fe73, type: 3}
+  - {fileID: 8300000, guid: cda65a1c73b720041a15f6995f5b6a30, type: 3}
+  - {fileID: 8300000, guid: 83ce5c37638fda14ea4c601be182fa6a, type: 3}
+  - {fileID: 8300000, guid: 528cc8cf238354c4babf49ceb64cf193, type: 3}
+  - {fileID: 8300000, guid: 02cf1fccd53311d41adfcb3b7025efeb, type: 3}
+  - {fileID: 8300000, guid: 21ce61c85eba3004b96cf2d6c59d00dc, type: 3}
+  - {fileID: 8300000, guid: e9e7743e3bc257a46927c653d690ac5b, type: 3}
+  - {fileID: 8300000, guid: f63f3e04d573d534f8a89621e03c92ea, type: 3}
+  - {fileID: 8300000, guid: d71fa8ec93fbbd74f861e52a3e9fb680, type: 3}
 --- !u!1 &140772
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,7 +37,7 @@ public class ZombieAttackParticle : MonoBehaviour
     {
         if (TryGetParticle(attackType, out Pools particle))
         { 
-            _objectPooler.GetFromPool(particle, _transform.position, Quaternion.identity);
+            _objectPooler.Spawn(particle, _transform.position, Quaternion.identity);
         }
 
     }

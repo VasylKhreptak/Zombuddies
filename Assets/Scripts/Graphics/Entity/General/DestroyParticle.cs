@@ -13,8 +13,6 @@ public class DestroyParticle : MonoBehaviour
     [SerializeField] private Vector3 _offset;
 
     [Inject] private ObjectPooler _objectPooler;
-
-    private Vector3 _position;
     
     #region MonoBehaviour
 
@@ -22,11 +20,6 @@ public class DestroyParticle : MonoBehaviour
     {
         _transform ??= GetComponent<Transform>();
         _damageableObject ??= GetComponent<DamageableObject>();
-    }
-
-    private void Awake()
-    {
-        _position = _transform.position + _offset;
     }
 
     private void OnEnable()
@@ -41,9 +34,11 @@ public class DestroyParticle : MonoBehaviour
 
     #endregion
 
-    private void SpawnParticle()
+    private void SpawnParticle()   
     {
-        _objectPooler.GetFromPool(_particle, _transform.position, Quaternion.identity);
+        Vector3 position = _transform.position + _offset;
+        
+        _objectPooler.Spawn(_particle, position, Quaternion.identity);
     }
 
     private void OnDrawGizmosSelected()

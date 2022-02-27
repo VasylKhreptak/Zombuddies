@@ -73,7 +73,7 @@ public sealed class ObjectPooler : MonoBehaviour
         }
     }
 
-    public GameObject GetFromPool(Pools pool, Vector3 position, Quaternion rotation)
+    public GameObject Spawn(Pools pool, Vector3 position, Quaternion rotation)
     {
         if (_poolDictionary.ContainsKey(pool) == false)
         {
