@@ -46,6 +46,8 @@ public class ZombieTargetFollow : MonoBehaviour
 
     #endregion
 
+    private void StartSettingDestination(Transform target) => StartSettingDestination();
+
     private void StartSettingDestination()
     {
         if (_setDestinationCoroutine == null)

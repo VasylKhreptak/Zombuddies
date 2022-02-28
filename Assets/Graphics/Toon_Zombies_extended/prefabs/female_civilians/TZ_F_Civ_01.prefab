@@ -1079,7 +1079,7 @@ GameObject:
   - component: {fileID: 896194104339896328}
   - component: {fileID: 7803756719339147547}
   - component: {fileID: 8653089816592153997}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TZ_F_Civ_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1267,7 +1267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a865f4832c4f304881b2c01448caa8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackZone: {fileID: 6099068392442067797}
+  _attackZone: {fileID: 6805763485963462903}
   _atacks:
   - type: 0
     damage: 35
@@ -1287,7 +1287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7b58db12d8efb4995da423730cb74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackZone: {fileID: 6099068392442067797}
+  _attackZone: {fileID: 6805763485963462903}
   _animator: {fileID: 9515022}
   _animatorAtackParameter: Atack
   _atackIndexParameter: AtackIndex
@@ -4639,7 +4639,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8230609022682714044}
   - component: {fileID: 2312491770312210526}
-  - component: {fileID: 6099068392442067797}
+  - component: {fileID: 6805763485963462903}
   m_Layer: 0
   m_Name: AtackZone
   m_TagString: Untagged
@@ -4674,7 +4674,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5167779, y: 0.55259, z: 0.3298645}
   m_Center: {x: -0.014189525, y: 1.234342, z: 0.31143057}
---- !u!114 &6099068392442067797
+--- !u!114 &6805763485963462903
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4683,9 +4683,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1020145501225874612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba84217b13d30e84587090e1957720f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 4108c67a28052d948a294fca0bf305e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _triggerComponentData: {fileID: 11400000, guid: 209913383b1debf478ddddae8a5bd882,
-    type: 2}
-  affectedGameObject: {fileID: 0}
+  _triggerData: {fileID: 11400000, guid: 209913383b1debf478ddddae8a5bd882, type: 2}
+  affectedObject: {fileID: 0}

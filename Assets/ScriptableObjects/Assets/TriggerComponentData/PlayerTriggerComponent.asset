@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 127064780988ab640ab614a0cbc0b120, type: 3}
-  m_Name: ZombieTriggerComponentData
+  m_Name: PlayerTriggerComponent
   m_EditorClassIdentifier: 
   _layerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 8

@@ -22,8 +22,8 @@ public class ZombieAttack : MonoBehaviour
 
     public void TryAttack(ZombieAttackType zombieAttackType)
     {
-        if (_attackZone.affectedGameObject != null &&
-            _attackZone.affectedGameObject.TryGetComponent(out IHealth health))
+        if (_attackZone.affectedObject != null &&
+            _attackZone.affectedObject.TryGetComponent(out IHealth health))
         {
             onAttack?.Invoke(zombieAttackType);
             health.TakeDamage(GetDamageValue(zombieAttackType));

@@ -62,7 +62,7 @@ public class ZombieAtackAnimation : MonoBehaviour
     {
         while (true)
         {
-            if (_attackZone.affectedGameObject == null || _attackZone.affectedGameObject.activeSelf == false)
+            if (_attackZone.affectedObject == null || _attackZone.affectedObject.gameObject.activeSelf == false)
             {
                 yield return new WaitForSeconds(_animateDelay);
                 continue;

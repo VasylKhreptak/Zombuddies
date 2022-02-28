@@ -7,11 +7,13 @@ public class ZombieTargetsProvider : MonoBehaviour
     [Header("Targets")]
     [SerializeField] private List<Transform> _targets;
 
-    public Action onAddTarget;
-    
+    public Action<Transform> onAddTarget;
+
     public void AddTarget(Transform target)
     {
         _targets.Add(target);
+        
+        onAddTarget.Invoke(target);
     }
 
     public Transform GetClosestTarget(Transform start)
@@ -20,15 +22,15 @@ public class ZombieTargetsProvider : MonoBehaviour
         {
             _targets.Remove(inappropriateElement);
         }
-        
-        return _targets.Count == 0 ?  null : start.FindClosestTransform(_targets.ToArray());
+
+        return _targets.Count == 0 ? null : start.FindClosestTransform(_targets.ToArray());
     }
 
     private bool HasInappropriateElement<T>(List<T> list, out T element) where T : Component
     {
         for (int i = 0; i < list.Count; i++)
         {
-            if (list[i] == null || list[i].gameObject.activeSelf == false)
+            if (list[i].gameObject.IsValid() == false)
             {
                 element = list[i];
 
