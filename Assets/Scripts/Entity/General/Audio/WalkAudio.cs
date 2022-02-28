@@ -16,6 +16,7 @@ public class WalkAudio : MonoBehaviour
     [SerializeField] private float _taregtWalkSpeed;
     [SerializeField] private float _minVolume;
     [SerializeField] private float _maxVolume;
+    [SerializeField] private float _volumeAplifier = 1f;
 
     [Header("Audio Preferences")]
     [SerializeField] private AudioItem[] _audioItems;
@@ -81,7 +82,7 @@ public class WalkAudio : MonoBehaviour
 
         float unclampedVolume = speed / _taregtWalkSpeed;
 
-        return Mathf.Clamp(unclampedVolume, _minVolume, _maxVolume);
+        return Mathf.Clamp(unclampedVolume, _minVolume, _maxVolume) * _volumeAplifier;
     }
     
     private void OnDrawGizmosSelected()
