@@ -101,7 +101,9 @@ public class ZombieTargetFollow : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (_targetsProvider == null) return;
+        bool CanDraw() => _targetsProvider != null;
+        
+        if (CanDraw() == false) return;
         
         Transform closestTarget = _targetsProvider.GetClosestTarget(_transform);
         

@@ -83,13 +83,14 @@ public sealed class ObjectPooler : MonoBehaviour
 
         var objectFromPool = _poolDictionary[pool].Dequeue();
 
-        objectFromPool.transform.position = position;
-        objectFromPool.transform.rotation = rotation;
-
         if (objectFromPool.activeSelf)
         {
             objectFromPool.SetActive(false);
         }
+        
+        objectFromPool.transform.position = position;
+        objectFromPool.transform.rotation = rotation;
+
 
         objectFromPool.SetActive(true);
 

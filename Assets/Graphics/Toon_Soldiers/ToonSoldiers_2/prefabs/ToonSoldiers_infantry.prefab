@@ -632,6 +632,8 @@ GameObject:
   - component: {fileID: 4162490602394130807}
   - component: {fileID: 3394823417642981896}
   - component: {fileID: 2938805187577691596}
+  - component: {fileID: 3836424209503391807}
+  - component: {fileID: 2448543030836104619}
   m_Layer: 0
   m_Name: weapon_assault_rifle_A
   m_TagString: Untagged
@@ -730,11 +732,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startTransform: {fileID: 8229249730645712159}
-  _rayLength: 30
-  _checkDelay: 0.2
+  _rayOriginOffset: -1.45
+  _rayLength: 60
+  _checkDelay: 0.4
   _targetLayerMask:
     serializedVersion: 2
     m_Bits: 1024
+  _environmentLayerMask:
+    serializedVersion: 2
+    m_Bits: 1473
   _attackArea: {fileID: 1707778768450087102}
 --- !u!114 &2938805187577691596
 MonoBehaviour:
@@ -749,8 +755,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletSpawnPlace: {fileID: 8229249730645712159}
-  _shootDelay: 0.2
+  _shootDelay: 0.15
   _bullet: 2
+  _minScatterAngle: 3
+  _maxScatterAngle: 6
+--- !u!114 &3836424209503391807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb379b35650a8d4abc1dc332a64bff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletSpawnPlace: {fileID: 8229249730645712159}
+  _weapon: {fileID: 2938805187577691596}
+  _audioClips:
+  - {fileID: 8300000, guid: ea76dc95035dcfc49bba0bdbdd422565, type: 3}
+  _volume: 1
+  _spatialBlend: 1
+--- !u!114 &2448543030836104619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a13d3264afb6e874fa44c06187d46860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particleSpawnPlace: {fileID: 8229249730645712159}
+  _weapon: {fileID: 2938805187577691596}
+  _particle: -1
+  _rotationOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &135028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,7 +1311,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.44428697
+  m_Radius: 0.59
   m_Height: 2.5995996
   m_Direction: 1
   m_Center: {x: 0, y: 1.3093582, z: 0}
@@ -1624,8 +1666,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 9.05
-  m_Center: {x: 0, y: 0.75, z: 0}
+  m_Radius: 12
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1321203427339976084
 MonoBehaviour:
   m_ObjectHideFlags: 0

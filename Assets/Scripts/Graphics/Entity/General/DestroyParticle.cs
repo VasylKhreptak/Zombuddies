@@ -43,7 +43,9 @@ public class DestroyParticle : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (_transform == null) return;
+        bool CanDraw() => _transform != null;
+        
+        if (CanDraw() == false) return;
 
         Vector3 position = _transform.position + _offset;
         

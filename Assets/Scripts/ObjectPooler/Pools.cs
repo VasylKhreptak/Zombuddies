@@ -5,4 +5,5 @@ public enum Pools
     None = -1,
     BloodImpact = 0,
     EntityDestroyParticle = 1,
+    AssaultRifleBullet = 2,
 }

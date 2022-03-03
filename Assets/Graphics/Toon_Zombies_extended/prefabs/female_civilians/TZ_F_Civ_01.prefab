@@ -513,6 +513,8 @@ GameObject:
   - component: {fileID: 2808817179937424605}
   - component: {fileID: 7676075524515079298}
   - component: {fileID: 997826853045436159}
+  - component: {fileID: 7256436421945822311}
+  - component: {fileID: 23165032831449251}
   m_Layer: 10
   m_Name: TZ_F_Civ_01
   m_TagString: Untagged
@@ -896,6 +898,35 @@ MonoBehaviour:
   _startOffset: 1
   _rayLength: 1.6
   _checkerData: {fileID: 11400000, guid: 80eadcb8d4b3f6b43983b8db238526a5, type: 2}
+--- !u!114 &7256436421945822311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f58892a527c894549b6fdbc6de796bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionDetectorData: {fileID: 11400000, guid: dd4e07efca154094cac78eaf506bdd89,
+    type: 2}
+--- !u!114 &23165032831449251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37c8534abad48f74088d6e52dc7f0244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionDetector: {fileID: 7256436421945822311}
+  _particle: 0
+  _rotationOffsset: {x: 0, y: 0, z: 0}
 --- !u!1 &141200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1716,7 +1747,7 @@ GameObject:
   - component: {fileID: 8230609022682714044}
   - component: {fileID: 2312491770312210526}
   - component: {fileID: 6805763485963462903}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AtackZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

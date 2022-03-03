@@ -1,37 +1,24 @@
-using System;
 using UnityEngine;
 
-public class CollisionComponent : MonoBehaviour
+public class CollisionComponent : CollisionDetector
 {
-    [Header("Data")]
-    [SerializeField] private CollisionComponentData _collisionComponentData;
+    public bool isObjectStaying { get; private set; }
 
-    public bool isStaying { get; private set; }
+    public GameObject stayingObject;
 
-    public Action<Collision> onEnter;
-    public Action<Collision> onExit;
-
-    #region MonoBehaviour
-
-    private void OnCollisionEnter(Collision collision)
+    protected override void OnEnter(Collision collision)
     {
-        if (_collisionComponentData.LayerMask.ContainsLayer(collision.gameObject.layer))
-        {
-            onEnter?.Invoke(collision);
-            
-            isStaying = true;
-        }
+        isObjectStaying = true;
+        stayingObject = collision.gameObject;
+        
+        base.OnEnter(collision);
     }
-
-    private void OnCollisionExit(Collision collision)
+    
+    protected override void OnExit(Collision collision)
     {
-        if (_collisionComponentData.LayerMask.ContainsLayer(collision.gameObject.layer))
-        {
-            onExit?.Invoke(collision);
-
-            isStaying = false;
-        }
+        isObjectStaying = false;
+        stayingObject = null;
+        
+        base.OnExit(collision);
     }
-
-    #endregion
 }

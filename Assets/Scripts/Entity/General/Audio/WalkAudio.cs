@@ -87,7 +87,9 @@ public class WalkAudio : MonoBehaviour
     
     private void OnDrawGizmosSelected()
     {
-        if (_transform == null) return;
+        bool CanDraw() => _transform != null;
+        
+        if (CanDraw() == false) return;
 
         Gizmos.color = Color.green;
         Gizmos.DrawRay(_transform.position + new Vector3(0, _startOffset, 0),

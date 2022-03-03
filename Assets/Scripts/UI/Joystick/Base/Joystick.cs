@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
@@ -49,6 +50,9 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     [SerializeField] protected RectTransform background;
     [SerializeField] private RectTransform handle;
 
+    public Action onPointerDown;
+    public Action onPointerUp;
+    
     private RectTransform baseRect;
 
     private Canvas canvas;
@@ -81,8 +85,10 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public virtual void OnPointerDown(PointerEventData eventData)
     {
         OnDrag(eventData);
+        
+        onPointerDown?.Invoke();
     }
-
+    
     public void OnDrag(PointerEventData eventData)
     {
         Vector2 position = RectTransformUtility.WorldToScreenPoint(cam, background.position);
@@ -157,6 +163,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         input = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;
+
+        onPointerUp?.Invoke();
     }
 
     protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)

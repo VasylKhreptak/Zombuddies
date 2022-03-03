@@ -81,7 +81,9 @@ public class ZombieRandomMovement : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (_transform == null) return;
+        bool CanDraw() => _transform != null;
+        
+        if (CanDraw() == false) return;
         
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(_transform.position, _movementData.Range);
