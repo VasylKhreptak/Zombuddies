@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class DestoyAudio : MonoBehaviour
+public class OnDeathAudio : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform _transform;

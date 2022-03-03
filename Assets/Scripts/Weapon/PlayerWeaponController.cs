@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 public class PlayerWeaponController : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class PlayerWeaponController : MonoBehaviour
     [SerializeField] private Weapon _weapon;
     [SerializeField] private AimChecker _aim;
 
+    [Inject] private Joystick _joystick;
+    
     #region MonoBehaviour
 
     private void OnValidate()
@@ -19,13 +22,27 @@ public class PlayerWeaponController : MonoBehaviour
     {
         _aim.onAimEnter += _weapon.StartShooting;
         _aim.onAimExit += _weapon.StopShooting;
+        _joystick.onPointerDown += _weapon.StopShooting;
+        _joystick.onPointerUp += TryStartShooting;
     }
 
     private void OnDisable()
     {
         _aim.onAimEnter -= _weapon.StartShooting;
         _aim.onAimExit -= _weapon.StopShooting;
+        _joystick.onPointerDown -= _weapon.StopShooting;
+        _joystick.onPointerUp -= TryStartShooting;
     }
 
     #endregion
+
+    private void TryStartShooting()
+    {
+        if (CanStartShooting())
+        {
+            _weapon.StartShooting();
+        }
+    }
+
+    private bool CanStartShooting() => _aim.aimed;
 }

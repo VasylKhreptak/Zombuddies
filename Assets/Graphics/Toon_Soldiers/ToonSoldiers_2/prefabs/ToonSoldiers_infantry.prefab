@@ -757,8 +757,6 @@ MonoBehaviour:
   _bulletSpawnPlace: {fileID: 8229249730645712159}
   _shootDelay: 0.15
   _bullet: 2
-  _minScatterAngle: 3
-  _maxScatterAngle: 6
 --- !u!114 &3836424209503391807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1192,6 +1190,7 @@ GameObject:
   - component: {fileID: 2904439252035125462}
   - component: {fileID: 7006968799820194547}
   - component: {fileID: 9050707710523022671}
+  - component: {fileID: 7935971173112284793}
   m_Layer: 3
   m_Name: ToonSoldiers_infantry
   m_TagString: Untagged
@@ -1431,7 +1430,7 @@ MonoBehaviour:
   _transform: {fileID: 411534}
   _damageableObject: {fileID: 8681222978858598434}
   _particle: 1
-  _offset: {x: 0, y: 0.57, z: 0}
+  _offset: {x: 0, y: 0.62, z: 0}
 --- !u!114 &2904439252035125462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1446,7 +1445,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 411534}
   _damageableObject: {fileID: 8681222978858598434}
-  _audioClips: []
+  _audioClips:
+  - {fileID: 8300000, guid: feb202a394831974e8e5b78e50c5d430, type: 3}
+  - {fileID: 8300000, guid: ee81b9fc40006204480948fded7c328f, type: 3}
+  - {fileID: 8300000, guid: 06737b620387018428f84707d812782d, type: 3}
+  - {fileID: 8300000, guid: 891c3ad049a2fbc49a7acd886336fe73, type: 3}
+  - {fileID: 8300000, guid: cda65a1c73b720041a15f6995f5b6a30, type: 3}
+  - {fileID: 8300000, guid: 83ce5c37638fda14ea4c601be182fa6a, type: 3}
+  - {fileID: 8300000, guid: 528cc8cf238354c4babf49ceb64cf193, type: 3}
+  - {fileID: 8300000, guid: 02cf1fccd53311d41adfcb3b7025efeb, type: 3}
+  - {fileID: 8300000, guid: 21ce61c85eba3004b96cf2d6c59d00dc, type: 3}
+  - {fileID: 8300000, guid: e9e7743e3bc257a46927c653d690ac5b, type: 3}
+  - {fileID: 8300000, guid: f63f3e04d573d534f8a89621e03c92ea, type: 3}
+  - {fileID: 8300000, guid: d71fa8ec93fbbd74f861e52a3e9fb680, type: 3}
 --- !u!114 &7006968799820194547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1503,6 +1514,21 @@ MonoBehaviour:
   - {fileID: 449924}
   - {fileID: 402774}
   - {fileID: 484122}
+--- !u!114 &7935971173112284793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce882ab3af830a04589dc05d009e611d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameObject: {fileID: 182702}
+  _damageableObject: {fileID: 8681222978858598434}
+  _destroy: 0
 --- !u!1 &199536
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,7 +41,5 @@ public class DamageableObject : MonoBehaviour, IHealth
     private void OnDeath()
     {
         onDeath?.Invoke();
-        
-        gameObject.SetActive(false);
     }
 }

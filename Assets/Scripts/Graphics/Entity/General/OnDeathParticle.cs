@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Zenject;
 
-public class DestroyParticle : MonoBehaviour
+public class OnDeathParticle : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform _transform;
