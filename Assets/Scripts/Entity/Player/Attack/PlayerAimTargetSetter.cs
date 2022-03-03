@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using Zenject;
@@ -74,8 +72,20 @@ public class PlayerAimTargetSetter : MonoBehaviour
     {
         foreach (var aim in _aims)
         {
-            aim.data.sourceObjects.SetTransform(0, target);
-                //_rigBuilder.Build();
+            var data = aim.data.sourceObjects;
+            data.SetTransform(0, target);
+
+            aim.data.sourceObjects = data;
         }
+
+        _rigBuilder.Build();
+
+        if (target == null)
+        {
+            Debug.Log("Name");
+            return;
+        }
+
+        Debug.Log("Name: " + (target.name));
     }
 }

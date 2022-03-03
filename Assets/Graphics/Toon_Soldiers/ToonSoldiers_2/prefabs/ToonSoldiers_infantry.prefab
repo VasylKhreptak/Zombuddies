@@ -1834,7 +1834,7 @@ MonoBehaviour:
   _aims:
   - {fileID: 3066296326527239486}
   - {fileID: 2408593775152462848}
-  _updateDelay: 0.2
+  _updateDelay: 0.35
 --- !u!1 &3792760497753376763
 GameObject:
   m_ObjectHideFlags: 0

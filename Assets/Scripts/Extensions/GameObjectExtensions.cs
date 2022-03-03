@@ -7,4 +7,9 @@ public static class GameObjectExtensions
     {
         return gameObject != null && gameObject.activeSelf;
     }
+
+    public static bool IsNotValid(this GameObject gameObject)
+    {
+        return gameObject == null || gameObject.activeSelf == false;
+    }
 }

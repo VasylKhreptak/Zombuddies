@@ -14,7 +14,7 @@ public class AttackArea : TriggerArea
     private Coroutine _findTargetCoroutine;
 
     #region MonoBehaviour
-    
+
     private void OnDisable()
     {
         StopFindingClosestTarget();
@@ -68,6 +68,8 @@ public class AttackArea : TriggerArea
         {
             if (IsEmpty == false)
             {
+                ClearUpArea();
+                
                 AssignTarget();
             }
 
@@ -78,5 +80,16 @@ public class AttackArea : TriggerArea
     private void AssignTarget()
     {
         closestTarget = _transform.FindClosestTransform(affectedObjects.ToArray())?.root;
+    }
+
+    private void ClearUpArea()
+    {
+        for (int i = 0; i < affectedObjects.Count; i++)
+        {
+            if (affectedObjects[i].gameObject.IsNotValid())
+            {
+                affectedObjects.Remove(affectedObjects[i]);
+            }
+        }
     }
 }

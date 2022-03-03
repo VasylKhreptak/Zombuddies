@@ -44,5 +44,5 @@ public class PlayerWeaponController : MonoBehaviour
         }
     }
 
-    private bool CanStartShooting() => _aim.aimed;
+    private bool CanStartShooting() => _aim.aimed && _joystick.IsMoving == false;
 }

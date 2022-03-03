@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerArea : Trigger
-{
-    [HideInInspector] public List<Transform> affectedObjects;
+{ 
+    public List<Transform> affectedObjects;
 
     public bool IsEmpty => affectedObjects.Count == 0;
 
