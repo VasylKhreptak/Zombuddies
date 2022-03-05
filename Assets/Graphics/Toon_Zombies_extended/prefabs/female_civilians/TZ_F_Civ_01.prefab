@@ -927,7 +927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collisionDetector: {fileID: 7256436421945822311}
-  _particle: 0
+  _particle: 3
   _rotationOffsset: {x: 0, y: 0, z: 0}
 --- !u!114 &8410676261729322135
 MonoBehaviour:

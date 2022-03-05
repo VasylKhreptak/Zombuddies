@@ -37,7 +37,9 @@ public class OnWeaponShootParticle : MonoBehaviour
     {
         Quaternion rotataion = Quaternion.LookRotation(_particleSpawnPlace.forward, Vector3.up);
         
-        rotataion = quaternion.Euler(rotataion.eulerAngles + _rotationOffset);
+        Debug.DrawRay(_particleSpawnPlace.position, _particleSpawnPlace.forward * 10f, Color.red, 5f);
+
+            rotataion = quaternion.Euler(rotataion.eulerAngles + _rotationOffset);
 
         _objectPooler.Spawn(_particle, _particleSpawnPlace.position, rotataion);
     }

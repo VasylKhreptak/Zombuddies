@@ -79,13 +79,5 @@ public class PlayerAimTargetSetter : MonoBehaviour
         }
 
         _rigBuilder.Build();
-
-        if (target == null)
-        {
-            Debug.Log("Name");
-            return;
-        }
-
-        Debug.Log("Name: " + (target.name));
     }
 }
