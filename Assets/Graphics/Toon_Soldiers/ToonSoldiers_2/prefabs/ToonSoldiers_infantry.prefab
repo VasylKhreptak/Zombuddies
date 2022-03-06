@@ -1409,7 +1409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e12af135b729ba4aa82366357db0f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
+  _data: {fileID: 11400000, guid: 5ed1dee53ea6b194f8613bdb582a55f4, type: 2}
 --- !u!114 &2549537886549043954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1424,8 +1424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 411534}
   _damageableObject: {fileID: 8681222978858598434}
-  _particle: 1
-  _offset: {x: 0, y: 0.62, z: 0}
+  _data: {fileID: 0}
 --- !u!114 &2904439252035125462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1523,7 +1522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameObject: {fileID: 182702}
   _damageableObject: {fileID: 8681222978858598434}
-  _data: {fileID: 0}
+  _data: {fileID: 11400000, guid: 2a27198ce5adb4e4991c530922bf7093, type: 2}
 --- !u!1 &199536
 GameObject:
   m_ObjectHideFlags: 0
