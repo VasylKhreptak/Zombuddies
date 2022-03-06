@@ -8,9 +8,8 @@ public class OnDeathParticle : MonoBehaviour
     [SerializeField] private Transform _transform;
     [SerializeField] private DamageableObject _damageableObject;
 
-    [Header("Preferences")]
-    [SerializeField] private Pools _particle;
-    [SerializeField] private Vector3 _offset;
+    [Header("Data")]
+    [SerializeField] private OnDeathParticleData _data;
 
     [Inject] private ObjectPooler _objectPooler;
     
@@ -36,9 +35,9 @@ public class OnDeathParticle : MonoBehaviour
 
     private void SpawnParticle()   
     {
-        Vector3 position = _transform.position + _offset;
+        Vector3 position = _transform.position + _data.Offset;
         
-        _objectPooler.Spawn(_particle, position, Quaternion.identity);
+        _objectPooler.Spawn(_data.Particle, position, Quaternion.identity);
     }
 
     private void OnDrawGizmosSelected()
@@ -47,7 +46,7 @@ public class OnDeathParticle : MonoBehaviour
         
         if (CanDraw() == false) return;
 
-        Vector3 position = _transform.position + _offset;
+        Vector3 position = _transform.position + _data.Offset;
         
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(position, 0.3f);

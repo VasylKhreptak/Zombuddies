@@ -1345,12 +1345,6 @@ MonoBehaviour:
   _transform: {fileID: 411534}
   _groundChecker: {fileID: 1677961182735964217}
   _speedAdapter: {fileID: 367300413477618063}
-  _startOffset: 1
-  _rayLength: 3
-  _taregtWalkSpeed: 6
-  _minVolume: 0.2
-  _maxVolume: 1
-  _volumeAplifier: 1
   _audioItems:
   - layerMask:
       serializedVersion: 2
@@ -1386,6 +1380,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b0161becde9b4c5458715ce6d0cc36d8, type: 3}
   - {fileID: 8300000, guid: 90d766b4abb61074c9f5ecb9064e056c, type: 3}
   - {fileID: 8300000, guid: 733953169c8e0914d880a65d4543e25e, type: 3}
+  _data: {fileID: 11400000, guid: 186838ba04ab0684f8f0f2222de8ee91, type: 2}
 --- !u!114 &1677961182735964217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1528,7 +1523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameObject: {fileID: 182702}
   _damageableObject: {fileID: 8681222978858598434}
-  _destroy: 0
+  _data: {fileID: 0}
 --- !u!1 &199536
 GameObject:
   m_ObjectHideFlags: 0

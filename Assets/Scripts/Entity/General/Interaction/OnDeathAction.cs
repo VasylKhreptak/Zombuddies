@@ -6,9 +6,8 @@ public class OnDeathAction : MonoBehaviour
     [SerializeField] private GameObject _gameObject;
     [SerializeField] private DamageableObject _damageableObject;
 
-    [Header("Action")]
-    [SerializeField] private bool _destroy;
-
+    [Header("Data")]
+    [SerializeField] private OnDeathActionData _data;
     #region MonoBehaviour
 
     private void OnValidate()
@@ -31,7 +30,7 @@ public class OnDeathAction : MonoBehaviour
 
     private void StartSelectedAction()
     {
-        if (_destroy)
+        if (_data.DestroyOnDeath)
         {
             Destroy(_gameObject);
         }

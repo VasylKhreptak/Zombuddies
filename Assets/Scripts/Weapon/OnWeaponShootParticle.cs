@@ -13,7 +13,7 @@ public class OnWeaponShootParticle : MonoBehaviour
     [SerializeField] private Vector3 _rotationOffset;
 
     [Inject] private ObjectPooler _objectPooler;
-    
+
     #region MonoBehaviour
 
     private void OnValidate()
@@ -37,9 +37,7 @@ public class OnWeaponShootParticle : MonoBehaviour
     {
         Quaternion rotataion = Quaternion.LookRotation(_particleSpawnPlace.forward, Vector3.up);
         
-        Debug.DrawRay(_particleSpawnPlace.position, _particleSpawnPlace.forward * 10f, Color.red, 5f);
-
-            rotataion = quaternion.Euler(rotataion.eulerAngles + _rotationOffset);
+        rotataion = quaternion.Euler(rotataion.eulerAngles + _rotationOffset);
 
         _objectPooler.Spawn(_particle, _particleSpawnPlace.position, rotataion);
     }

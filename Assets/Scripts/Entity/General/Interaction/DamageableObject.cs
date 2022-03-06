@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class DamageableObject : MonoBehaviour, IHealth
 {
-    [Header("Preferences")]
-    [SerializeField] private float _maxHealth = 100f;
-
+    [Header("Data")]
+    [SerializeField] private DamageableObjectData _data;
+    
     private float _health;
 
     private bool IsAlive => _health > 0;
@@ -19,7 +19,7 @@ public class DamageableObject : MonoBehaviour, IHealth
 
     private void OnEnable()
     {
-        SetHealth(_maxHealth);
+        SetHealth(_data.MaxHealth);
     }
 
     #endregion

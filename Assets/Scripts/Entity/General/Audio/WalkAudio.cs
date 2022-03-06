@@ -8,19 +8,13 @@ public class WalkAudio : MonoBehaviour
     [SerializeField] private Transform _transform;
     [SerializeField] private GroundChecker _groundChecker;
     [SerializeField] private SpeedAdapter _speedAdapter;
-    
 
-    [Header("Preferences")]
-    [SerializeField] private float _startOffset = 1f;
-    [SerializeField] private float _rayLength = 1f;
-    [SerializeField] private float _taregtWalkSpeed;
-    [SerializeField] private float _minVolume;
-    [SerializeField] private float _maxVolume;
-    [SerializeField] private float _volumeAplifier = 1f;
-
-    [Header("Audio Preferences")]
+    [Header("Audios")]
     [SerializeField] private AudioItem[] _audioItems;
     [SerializeField] private AudioClip[] _defaultStepSounds;
+
+    [Header("Data")]
+    [SerializeField] private WalkAudioData _data;
 
     [Inject] private AudioPooler _audioPooler;
 
@@ -58,10 +52,10 @@ public class WalkAudio : MonoBehaviour
 
     private AudioClip GetAudioClip()
     {
-        Ray ray = new Ray(_transform.position + new Vector3(0, _startOffset, 0),
+        Ray ray = new Ray(_transform.position + new Vector3(0, _data.StartOffset, 0),
             Vector3.down);
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, _rayLength))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, _data.RayLength))
         {
             foreach (var audioItem in _audioItems)
             {
@@ -80,9 +74,9 @@ public class WalkAudio : MonoBehaviour
     {
         float speed = _speedAdapter.velocity.magnitude;
 
-        float unclampedVolume = speed / _taregtWalkSpeed;
+        float unclampedVolume = speed / _data.TaregtWalkSpeed;
 
-        return Mathf.Clamp(unclampedVolume, _minVolume, _maxVolume) * _volumeAplifier;
+        return Mathf.Clamp(unclampedVolume, _data.MinVolume, _data.MaxVolume) * _data.VolumeAplifier;
     }
     
     private void OnDrawGizmosSelected()
@@ -92,8 +86,8 @@ public class WalkAudio : MonoBehaviour
         if (CanDraw() == false) return;
 
         Gizmos.color = Color.green;
-        Gizmos.DrawRay(_transform.position + new Vector3(0, _startOffset, 0),
-            Vector3.down * _rayLength);
+        Gizmos.DrawRay(_transform.position + new Vector3(0, _data.StartOffset, 0),
+            Vector3.down * _data.RayLength);
     }
 
     [Serializable]

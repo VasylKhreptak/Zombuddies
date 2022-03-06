@@ -12,7 +12,7 @@ public class ZombieAttackParticle : MonoBehaviour
     [SerializeField] private ParticleItem[] _particleItems;
 
     [Inject] private ObjectPooler _objectPooler;
-    
+
     #region MonoBehaviour
 
     private void OnValidate()
@@ -36,28 +36,29 @@ public class ZombieAttackParticle : MonoBehaviour
     private void TrySpawnParticle(ZombieAttackType attackType)
     {
         if (TryGetParticle(attackType, out Pools particle))
-        { 
+        {
             _objectPooler.Spawn(particle, _transform.position, Quaternion.identity);
         }
 
     }
 
-    private bool TryGetParticle(ZombieAttackType attackType,  out Pools particle)
+    private bool TryGetParticle(ZombieAttackType attackType, out Pools particle)
     {
         foreach (var particleItem in _particleItems)
         {
             if (particleItem.attackType == attackType)
             {
                 particle = particleItem.particle;
-                
+
                 return true;
             }
         }
+
         particle = Pools.None;
-        
+
         return false;
     }
-    
+
     [Serializable]
     public class ParticleItem
     {

@@ -7,9 +7,8 @@ public class OnCollisionParticle : MonoBehaviour
     [Header("References")]
     [SerializeField] private CollisionDetector _collisionDetector;
 
-    [Header("Preferences")]
-    [SerializeField] private Pools _particle;
-    [SerializeField] private Vector3 _rotationOffsset;
+    [Header("Data")]
+    [SerializeField] private OnCollisionParticleData _data;
 
     [Inject] private ObjectPooler _objectPooler;
     
@@ -40,8 +39,8 @@ public class OnCollisionParticle : MonoBehaviour
         
         Quaternion rotation = quaternion.LookRotation(contactPoint.normal, Vector3.up);
         
-        rotation = quaternion.Euler(rotation.eulerAngles + _rotationOffsset);
+        rotation = quaternion.Euler(rotation.eulerAngles + _data.RotationOffsset);
 
-        _objectPooler.Spawn(_particle, position, rotation);
+        _objectPooler.Spawn(_data.Particle, position, rotation);
     }
 }
