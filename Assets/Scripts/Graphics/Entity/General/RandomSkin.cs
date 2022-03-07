@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 public class RandomSkin : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Skin[] _skins;
+    [SerializeField] private BodyParts[] _skinElements;
 
     #region MonoBehaviour
 
@@ -17,34 +18,29 @@ public class RandomSkin : MonoBehaviour
 
     public void SetRandomSkin()
     {
-        SetSkin(_skins.Random());
+        DisableSkins();
+        
+        foreach (var skinElement in _skinElements)
+        {
+            skinElement.bodyParts.Random().SetActive(true);
+        }
     }
 
-    private void DisableSkins()
+    public void DisableSkins()
     {
-        foreach (var skin in _skins)
+        foreach (var skinElement in _skinElements)
         {
-            foreach (var skinPart in skin.parts)
+            foreach (var bodyPart in skinElement.bodyParts)
             {
-                skinPart.SetActive(false);
+                bodyPart.SetActive(false);
             }
         }
     }
 
-    private void SetSkin(Skin skin)
-    {
-        DisableSkins();
-
-        foreach (var skinPart in skin.parts)
-        {
-            skinPart.SetActive(true);
-        }
-    }
-
     [System.Serializable]
-    public class Skin
+    public class BodyParts
     {
-        public GameObject[] parts;
+        public GameObject[] bodyParts;
     }
 
     #region Editor
@@ -59,21 +55,15 @@ public class RandomSkin : MonoBehaviour
             base.OnInspectorGUI();
 
             RandomSkin targetScript = (RandomSkin)target;
+            
+            if(targetScript == null) return;
 
-            if (targetScript == null) return;
-
-            SetRandomSkinButton(targetScript);
-        }
-
-        private void SetRandomSkinButton(RandomSkin targetScript)
-        {
-            if (GUILayout.Button("Set Random Skin"))
+            if (GUILayout.Button("Set Radnom Skin"))
             {
                 targetScript.SetRandomSkin();
             }
         }
     }
-
     #endif
 
     #endregion

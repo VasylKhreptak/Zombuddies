@@ -14,12 +14,20 @@ public class DamageableObject : MonoBehaviour, IHealth
 
     public Action<float> onTakeDamage;
     public Action onDeath;
+    public Action onResurrection;
 
+    private bool _wasDied;
+    
     #region MonoBehaviour
 
     private void OnEnable()
     {
         SetHealth(_data.MaxHealth);
+
+        if (_wasDied)
+        {
+            onResurrection?.Invoke();
+        }
     }
 
     #endregion
@@ -40,6 +48,8 @@ public class DamageableObject : MonoBehaviour, IHealth
 
     private void OnDeath()
     {
+        _wasDied = true;
+        
         onDeath?.Invoke();
     }
 }
