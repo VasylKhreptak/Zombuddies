@@ -12,7 +12,13 @@ public class PlayerBodyAim : MonoBehaviour
     [SerializeField] private float _aimSpeed = 0.1f;
     [SerializeField] private Vector3 _offset;
 
-    [Inject] private Joystick _joystick;
+    private Joystick _joystick;
+
+    [Inject]
+    private void Construct(Joystick joystick)
+    {
+        _joystick = joystick;
+    }
     
     private Coroutine _aimCoroutine;
     

@@ -10,9 +10,14 @@ public class OnDeathAudio : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] private AudioClip[] _audioClips;
     
-    [Inject]
     private AudioPooler _audioPooler;
 
+    [Inject]
+    private void Construct(AudioPooler audioPooler)
+    {
+        _audioPooler = audioPooler;
+    }
+    
     #region MonoBehaviour
 
     private void OnValidate()

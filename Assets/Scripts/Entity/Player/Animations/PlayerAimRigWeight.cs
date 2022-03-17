@@ -15,7 +15,13 @@ public class PlayerAimRigWeight : MonoBehaviour
     [SerializeField] private float _duration = 0.5f;
     [SerializeField] private AnimationCurve _animationCurve;
 
-    [Inject] private Joystick _joystick;
+    private Joystick _joystick;
+
+    [Inject]
+    private void Construct(Joystick joystick)
+    {
+        _joystick = joystick;
+    }
 
     private Tween _tween;
 
@@ -57,15 +63,15 @@ public class PlayerAimRigWeight : MonoBehaviour
     #region OverloadedMethods
 
     private void EnableAiming() => SetWeight(1f);
-    
+
     private void DisableAiming() => SetWeight(0f);
 
     private void DisableAiming(Transform target) => DisableAiming();
-    
+
     private void EnableAimingWithDelay() => SetWeight(1f, _startDelay);
-    
+
     private void DisableAimingWithDelay() => SetWeight(0f, _startDelay);
-    
+
     private void TryEnableAiming()
     {
         if (CanEnableAiming())
@@ -83,7 +89,7 @@ public class PlayerAimRigWeight : MonoBehaviour
     }
 
     private void TryEnableAimingWithDelay(Transform target) => TryEnableAimingWithDelay();
-    
+
     #endregion
 
     private bool CanEnableAiming() => _joystick.IsMoving == false && _attackArea.IsEmpty == false;

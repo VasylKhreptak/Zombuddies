@@ -15,7 +15,7 @@ public enum Pools
     
     #region Zombies
 
-    
+    GirlZombie = 5,
 
     #endregion
 }

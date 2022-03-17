@@ -8,6 +8,6 @@ public class JoystickInstaller : MonoInstaller
     
     public override void InstallBindings()
     {
-        Container.BindInstance(_joystick).AsCached();
+        Container.BindInstance(_joystick).AsSingle();
     }
 }

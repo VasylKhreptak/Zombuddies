@@ -14,7 +14,13 @@ public class OnWeaponShootSound : MonoBehaviour
     [SerializeField] private float _volume = 1f;
     [SerializeField] private float _spatialBlend = 1f;
     
-    [Inject] private AudioPooler _audioPooler;
+    private AudioPooler _audioPooler;
+    
+    [Inject]
+    private void Construct(AudioPooler audioPooler)
+    {
+        _audioPooler = audioPooler;
+    }
     
     #region MonoBehaviour
 

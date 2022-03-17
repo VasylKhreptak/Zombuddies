@@ -9,8 +9,7 @@ public class DontDestroyOnLoadInstaller : MonoInstaller
     {
         foreach (var gameObj in _gameObjects)
         {
-            UnityEngine.GameObject instantiatedObject = Instantiate(gameObj);
-            DontDestroyOnLoad(instantiatedObject);
+            UnityEngine.GameObject instantiatedObject = GameObjectExtensions.InstantiateDontDestroyOnLoad(gameObj);
         }
     }
 }

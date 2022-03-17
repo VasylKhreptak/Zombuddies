@@ -11,7 +11,13 @@ public class OnDeathParticle : MonoBehaviour
     [Header("Data")]
     [SerializeField] private OnDeathParticleData _data;
 
-    [Inject] private ObjectPooler _objectPooler;
+    private ObjectPooler _objectPooler;
+    
+    [Inject]
+    private void Construct(ObjectPooler objectPooler)
+    {
+        _objectPooler = objectPooler;
+    }
     
     #region MonoBehaviour
 

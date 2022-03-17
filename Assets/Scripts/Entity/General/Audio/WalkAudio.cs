@@ -16,8 +16,14 @@ public class WalkAudio : MonoBehaviour
     [Header("Data")]
     [SerializeField] private WalkAudioData _data;
 
-    [Inject] private AudioPooler _audioPooler;
+    private AudioPooler _audioPooler;
 
+    [Inject]
+    private void Construct(AudioPooler audioPooler)
+    {
+        _audioPooler = audioPooler;
+    }
+    
     #region MonoHebaviour
 
     private void OnValidate()

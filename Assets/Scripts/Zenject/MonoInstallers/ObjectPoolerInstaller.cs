@@ -7,12 +7,9 @@ public class ObjectPoolerInstaller : MonoInstaller
     
     public override void InstallBindings()
     {
-        UnityEngine.GameObject instantiatedObject = Container.InstantiatePrefab(_objectPoolerPrefab);
-        instantiatedObject.transform.SetParent(null);
-        DontDestroyOnLoad(instantiatedObject);
-
-        ObjectPooler objectPooler = instantiatedObject.GetComponent<ObjectPooler>();
+        UnityEngine.GameObject instantiatedObject = Container.InstantiateDontDestroyOnLoad(_objectPoolerPrefab);
         
-        Container.BindInstance(objectPooler).AsSingle();
+        Container.Bind<ObjectPooler>().FromComponentOn(instantiatedObject).AsSingle();
     }
 }
+ 

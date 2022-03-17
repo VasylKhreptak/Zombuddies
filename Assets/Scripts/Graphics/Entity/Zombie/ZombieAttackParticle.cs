@@ -11,7 +11,13 @@ public class ZombieAttackParticle : MonoBehaviour
     [Header("Preferences")]
     [SerializeField] private ParticleItem[] _particleItems;
 
-    [Inject] private ObjectPooler _objectPooler;
+    private ObjectPooler _objectPooler;
+
+    [Inject]
+    private void Construct(ObjectPooler objectPooler)
+    {
+        _objectPooler = objectPooler;
+    }
 
     #region MonoBehaviour
 

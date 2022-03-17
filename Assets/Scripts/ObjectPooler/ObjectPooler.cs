@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using Zenject;
 
 public sealed class ObjectPooler : MonoBehaviour
@@ -9,9 +11,9 @@ public sealed class ObjectPooler : MonoBehaviour
     [Serializable]
     private class Pool
     {
-        public Pools _poolType;
-        public GameObject _prefab;
-        public int _size;
+        public Pools poolType;
+        public GameObject prefab;
+        public int size;
         [HideInInspector] public GameObject folder;
     }
 
@@ -19,11 +21,22 @@ public sealed class ObjectPooler : MonoBehaviour
     private Dictionary<Pools, Queue<GameObject>> _poolDictionary;
     [SerializeField] private List<Pool> _pools;
 
-    [Inject] private DiContainer _diContainer;
+    private DiContainer _diContainer;
+
+    [Inject]
+    private void Construct(DiContainer container)
+    {
+        _diContainer = container;
+    }
 
     #region MonoBehaviour
 
     private void Awake()
+    {
+        Init();
+    }
+
+    public void Init()
     {
         CreatePoolFolders();
 
@@ -46,7 +59,7 @@ public sealed class ObjectPooler : MonoBehaviour
     {
         foreach (var pool in _pools)
         {
-            pool.folder = new GameObject(pool._poolType.ToString());
+            pool.folder = new GameObject(pool.poolType.ToString());
             pool.folder.transform.parent = gameObject.transform;
         }
     }
@@ -59,9 +72,9 @@ public sealed class ObjectPooler : MonoBehaviour
         {
             var objectPool = new Queue<GameObject>();
 
-            for (var j = 0; j < _pools[i]._size; j++)
+            for (var j = 0; j < _pools[i].size; j++)
             {
-                var obj = _diContainer.InstantiatePrefab(_pools[i]._prefab);
+                GameObject obj = _diContainer.InstantiatePrefab(_pools[i].prefab);
                 obj.SetActive(false);
 
                 obj.transform.SetParent(_pools[i].folder.transform);
@@ -69,7 +82,7 @@ public sealed class ObjectPooler : MonoBehaviour
                 objectPool.Enqueue(obj);
             }
 
-            _poolDictionary.Add(_pools[i]._poolType, objectPool);
+            _poolDictionary.Add(_pools[i].poolType, objectPool);
         }
     }
 
@@ -81,13 +94,13 @@ public sealed class ObjectPooler : MonoBehaviour
             return null;
         }
 
-        var objectFromPool = _poolDictionary[pool].Dequeue();
+        GameObject objectFromPool = _poolDictionary[pool].Dequeue();
 
         if (objectFromPool.activeSelf)
         {
             objectFromPool.SetActive(false);
         }
-        
+
         objectFromPool.transform.position = position;
         objectFromPool.transform.rotation = rotation;
 

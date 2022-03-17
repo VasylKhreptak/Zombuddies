@@ -8,7 +8,13 @@ public class PlayerWeaponController : MonoBehaviour
     [SerializeField] private Weapon _weapon;
     [SerializeField] private AimChecker _aim;
 
-    [Inject] private Joystick _joystick;
+    private Joystick _joystick;
+
+    [Inject]
+    private void Construct(Joystick joystick)
+    {
+        _joystick = joystick;
+    }
     
     #region MonoBehaviour
 

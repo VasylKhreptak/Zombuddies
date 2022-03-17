@@ -8,12 +8,8 @@ public class AudioPoolerInstaller : MonoInstaller
     
     public override void InstallBindings()
     {
-        UnityEngine.GameObject instantiatedObject = Container.InstantiatePrefab(_audioPoolerPrefab);
-        instantiatedObject.transform.SetParent(null);
-        DontDestroyOnLoad(instantiatedObject);
-        
-        AudioPooler audioPooler = instantiatedObject.GetComponent<AudioPooler>();
+        UnityEngine.GameObject instantiatedObject = Container.InstantiateDontDestroyOnLoad(_audioPoolerPrefab);
 
-        Container.BindInstance(audioPooler).AsSingle();
+        Container.Bind<AudioPooler>().FromComponentOn(instantiatedObject).AsSingle();
     }
 }

@@ -12,8 +12,14 @@ public class OnWeaponShootParticle : MonoBehaviour
     [SerializeField] private Pools _particle;
     [SerializeField] private Vector3 _rotationOffset;
 
-    [Inject] private ObjectPooler _objectPooler;
+    private ObjectPooler _objectPooler;
 
+    [Inject]
+    private void Construct(ObjectPooler objectPooler)
+    {
+        _objectPooler = objectPooler;
+    }
+    
     #region MonoBehaviour
 
     private void OnValidate()

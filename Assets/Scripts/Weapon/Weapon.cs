@@ -14,20 +14,26 @@ public class Weapon : MonoBehaviour, IWeapon
     [SerializeField] private float _shootDelay = 0.2f;
     [SerializeField] private Pools _bullet;
 
-    [Inject] private ObjectPooler _objectPooler;
-    
+    private ObjectPooler _objectPooler;
+
     private Coroutine _shootCoroutine;
 
-    public Action onStartShooting;
-    public Action onStopShooting;
-    public Action onShoot;
+    public event Action onStartShooting;
+    public event Action onStopShooting;
+    public event Action onShoot;
+    
+    [Inject]
+    private void Construct(ObjectPooler objectPooler)
+    {
+        _objectPooler = objectPooler;
+    }
 
     public void StartShooting()
     {
         if (_shootCoroutine == null)
         {
             onStartShooting?.Invoke();
-            
+
             _shootCoroutine = StartCoroutine(ShootRoutine());
         }
     }
@@ -38,7 +44,7 @@ public class Weapon : MonoBehaviour, IWeapon
             onStopShooting?.Invoke();
 
             StopCoroutine(_shootCoroutine);
-            
+
             _shootCoroutine = null;
         }
     }
@@ -56,7 +62,7 @@ public class Weapon : MonoBehaviour, IWeapon
     private void Shoot()
     {
         onShoot?.Invoke();
-        
+
         SpawnBullet();
     }
 

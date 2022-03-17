@@ -12,8 +12,14 @@ public class StairMovement : MonoBehaviour
     [Header("Stair Movement Preferences")]
     [SerializeField] private float _smooth = 0.1f;
 
-    [Inject] private Joystick _joystick;
+    private Joystick _joystick;
 
+    [Inject]
+    private void Construct(Joystick joystick)
+    {
+        _joystick = joystick;
+    }
+    
     #region MonoBehaviour
 
     private void OnValidate()

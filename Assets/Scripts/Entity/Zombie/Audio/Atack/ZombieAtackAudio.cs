@@ -13,8 +13,15 @@ public class ZombieAtackAudio : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] private AudioItem[] _audioItems;
 
-    [Inject] private AudioPooler _audioPooler;
+    private AudioPooler _audioPooler;
 
+    [Inject]
+    private void Construct(AudioPooler audioPooler)
+    {
+        _audioPooler = audioPooler;
+    }
+    
+    
     #region MonoBehaviour
 
     private void OnValidate()

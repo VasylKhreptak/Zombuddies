@@ -11,10 +11,16 @@ public class ZombieTargetLook : MonoBehaviour
 
     [Header("Data")]
     [SerializeField] private ZombieTargetLookData _data;
-    
-    [Inject] private ZombieTargetsProvider _targetsProvider;
+
+    private ZombieTargetsProvider _targetsProvider;
 
     private Coroutine _lookCoroutine;
+
+    [Inject]
+    private void Construct(ZombieTargetsProvider targetsProvider)
+    {
+        _targetsProvider = targetsProvider;
+    }
 
     #region MonoBehaviour
 
@@ -40,7 +46,7 @@ public class ZombieTargetLook : MonoBehaviour
     private void StartLooking(Collider collider) => StartLooking(collider.transform);
 
     private void StopLooking(Collider collider) => StopLooking();
-    
+
     private void StartLooking(Transform target)
     {
         if (_lookCoroutine == null)
@@ -71,7 +77,7 @@ public class ZombieTargetLook : MonoBehaviour
             {
                 StopLooking();
             }
-            
+
             yield return null;
         }
     }
@@ -82,10 +88,10 @@ public class ZombieTargetLook : MonoBehaviour
     {
         Vector3 directionToTarget = target.position - _transform.position;
 
-        directionToTarget  = Vector3.Scale(directionToTarget, new Vector3(1, 0, 1));
-        
+        directionToTarget = Vector3.Scale(directionToTarget, new Vector3(1, 0, 1));
+
         Quaternion rotation = Quaternion.LookRotation(directionToTarget);
-        
+
         _transform.rotation = Quaternion.Lerp(_transform.rotation, rotation, Time.deltaTime * _data.LookSpeed);
     }
 }

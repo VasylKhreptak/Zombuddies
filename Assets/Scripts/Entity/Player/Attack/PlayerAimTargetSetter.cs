@@ -15,8 +15,14 @@ public class PlayerAimTargetSetter : MonoBehaviour
     [Header("Preferences")]
     [SerializeField] private float _updateDelay = 0.2f;
 
-    [Inject] private Joystick _joystick;
+    private Joystick _joystick;
 
+    [Inject]
+    private void Construct(Joystick joystick)
+    {
+        _joystick = joystick;
+    }
+    
     private Coroutine _setTargetCoroutine;
 
     #region MonoBehaviour
