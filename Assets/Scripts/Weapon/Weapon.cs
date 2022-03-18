@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Unity.Mathematics;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -21,7 +20,7 @@ public class Weapon : MonoBehaviour, IWeapon
     public event Action onStartShooting;
     public event Action onStopShooting;
     public event Action onShoot;
-    
+
     [Inject]
     private void Construct(ObjectPooler objectPooler)
     {
@@ -68,7 +67,7 @@ public class Weapon : MonoBehaviour, IWeapon
 
     private void SpawnBullet()
     {
-        Quaternion rotation = quaternion.LookRotation(_bulletSpawnPlace.forward, Vector3.up);
+        Quaternion rotation = Quaternion.LookRotation(_bulletSpawnPlace.forward, Vector3.up);
 
         _objectPooler.Spawn(_bullet, _bulletSpawnPlace.position, rotation);
     }
