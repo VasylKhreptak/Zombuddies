@@ -15,13 +15,19 @@ public class ZombieTargetFollow : MonoBehaviour
     [SerializeField] private float _maxSetDestinationDelay = 5f;
     [SerializeField] private float _maxDistance = 20;
 
-    [Inject] private ZombieTargetsProvider _targetsProvider;
-    
+    private ZombieTargetsProvider _targetsProvider;
+
     private Coroutine _setDestinationCoroutine;
 
     public Action onStartFollow;
     public Action onStopFollow;
-    
+
+    [Inject]
+    private void Construct(ZombieTargetsProvider targetsProvider)
+    {
+        _targetsProvider = targetsProvider;
+    }
+
     #region MonoBehaviour
 
     private void OnValidate()
@@ -40,7 +46,7 @@ public class ZombieTargetFollow : MonoBehaviour
     private void OnDisable()
     {
         StopSettingsDestination();
-        
+
         _targetsProvider.onAddTarget -= StartSettingDestination;
     }
 
@@ -53,7 +59,7 @@ public class ZombieTargetFollow : MonoBehaviour
         if (_setDestinationCoroutine == null)
         {
             onStartFollow?.Invoke();
-            
+
             _setDestinationCoroutine = StartCoroutine(SetDestinationRoutine());
         }
     }
@@ -63,14 +69,14 @@ public class ZombieTargetFollow : MonoBehaviour
         if (_setDestinationCoroutine != null)
         {
             onStopFollow?.Invoke();
-            
+
             StopCoroutine(_setDestinationCoroutine);
 
             _setDestinationCoroutine = null;
         }
     }
 
-    private IEnumerator SetDestinationRoutine() 
+    private IEnumerator SetDestinationRoutine()
     {
         while (true)
         {
@@ -82,9 +88,9 @@ public class ZombieTargetFollow : MonoBehaviour
 
                 break;
             }
-            
+
             _agent.SetDestination(closestTarget.position);
-            
+
             yield return new WaitForSeconds(GetDelay(closestTarget));
         }
     }
@@ -102,11 +108,11 @@ public class ZombieTargetFollow : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         bool CanDraw() => _targetsProvider != null;
-        
+
         if (CanDraw() == false) return;
-        
+
         Transform closestTarget = _targetsProvider.GetClosestTarget(_transform);
-        
+
         if (closestTarget == null) return;
 
         Gizmos.color = Color.green;

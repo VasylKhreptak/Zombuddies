@@ -7,7 +7,7 @@ public class PlayerWeaponController : MonoBehaviour
     [Header("References")]
     [SerializeField] private Weapon _weapon;
     [SerializeField] private AimChecker _aim;
-
+    
     private Joystick _joystick;
 
     [Inject]

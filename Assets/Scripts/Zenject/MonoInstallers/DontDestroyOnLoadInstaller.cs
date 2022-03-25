@@ -1,15 +1,17 @@
+using UnityEngine;
 using Zenject;
 
 public class DontDestroyOnLoadInstaller : MonoInstaller
 {
-    [UnityEngine.Header("References")]
-    [UnityEngine.SerializeField] private UnityEngine.GameObject[] _gameObjects;
+    [Header("References")]
+    [SerializeField] private GameObject[] _gameObjects;
     
     public override void InstallBindings()
     {
+
         foreach (var gameObj in _gameObjects)
         {
-            UnityEngine.GameObject instantiatedObject = GameObjectExtensions.InstantiateDontDestroyOnLoad(gameObj);
+            GameObject instantiatedObject = GameObjectExtensions.InstantiateDontDestroyOnLoad(gameObj);
         }
     }
 }

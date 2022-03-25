@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7849331736234317279}
   - component: {fileID: 2272941993697570675}
   - component: {fileID: 1618471852989399599}
-  - component: {fileID: -6958090226696865759}
   - component: {fileID: 2549783601643006165}
   m_Layer: 0
   m_Name: ProjectContext
@@ -49,7 +48,6 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 1618471852989399599}
-  - {fileID: -6958090226696865759}
   - {fileID: 2549783601643006165}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
@@ -78,20 +76,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioPoolerPrefab: {fileID: 930522724804760866, guid: a165a194ac512d24798ae7fe10edb33b,
-    type: 3}
---- !u!114 &-6958090226696865759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2768585017704187101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 077f6f5760571de4d83c25246650d2c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectPoolerPrefab: {fileID: 854542062271696845, guid: 032b24a8a006e4842a22409027141fb5,
     type: 3}
 --- !u!114 &2549783601643006165
 MonoBehaviour:

@@ -1,9 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using Zenject;
 
 public sealed class ObjectPooler : MonoBehaviour
@@ -35,8 +34,8 @@ public sealed class ObjectPooler : MonoBehaviour
     {
         Init();
     }
-
-    public void Init()
+   
+    private void Init()
     {
         CreatePoolFolders();
 

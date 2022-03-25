@@ -8,6 +8,6 @@ public class ZombieTargetsProviderInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.BindInstance(_targetsProvider).AsSingle();
+        Container.BindInstance(_targetsProvider).AsSingle(); 
     }
 }
