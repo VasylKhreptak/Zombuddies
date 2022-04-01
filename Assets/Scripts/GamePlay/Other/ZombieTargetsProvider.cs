@@ -7,12 +7,13 @@ public class ZombieTargetsProvider : MonoBehaviour
     [Header("Targets")]
     [SerializeField] private List<Transform> _targets;
 
+
     public Action<Transform> onAddTarget;
 
     public void AddTarget(Transform target)
     {
         _targets.Add(target);
-        
+
         onAddTarget.Invoke(target);
     }
 
